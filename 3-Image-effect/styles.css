@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 900px;
+    height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.clip {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.6s ease;
+    cursor: pointer;
+}
+
+.clip::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.clip h2 {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s;
+    z-index: 2;
+}
+
+.clip1 {
+    background-image: url("https://images.unsplash.com/photo-1604537466158-719b1972feb8?auto=format&fit=crop&w=1200&q=80");
+    clip-path: polygon(0 0, 46% 0, 39% 100%, 0 100%);
+}
+
+.clip2 {
+    background-image: url("https://images.unsplash.com/photo-1502228213426-d4e9f2add0e5?auto=format&fit=crop&w=1200&q=80");
+    clip-path: polygon(19% 0, 87% 0, 64% 100%, 33% 100%);
+}
+
+.clip3 {
+    background-image: url("https://images.unsplash.com/photo-1519757043093-285fcb07a4e4?auto=format&fit=crop&w=1200&q=80");
+    clip-path: polygon(82% 0, 100% 0, 100% 100%, 63% 100%);
+}
+
+.container:hover .clip {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+
+.container .clip:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.container .clip:hover h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        height: 400px;
+    }
+
+    .clip h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        height: 300px;
+    }
+
+    .clip h2 {
+        font-size: 1.2rem;
+        bottom: 20px;
+        left: 20px;
+    }
+}
